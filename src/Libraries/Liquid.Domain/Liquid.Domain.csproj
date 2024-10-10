@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <DisableImplicitAspNetCoreAnalyzers>true</DisableImplicitAspNetCoreAnalyzers>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <PackageId>LiquidApplication.Domain</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <TargetFramework>net8.0</TargetFramework>
+    <Version>8.0.00</Version>
+    <Description>Right level API for wiriting domain (business) logic as Liquid Microservices.</Description>
+    <Product>Liquid - Modern Application Framework</Product>
+    <Copyright>Avanade Inc.</Copyright>
+    <Company>Avanade Inc.</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\net8.0\</OutputPath>
+    <DocumentationFile>bin\Debug\net8.0\Liquid.Domain.xml</DocumentationFile>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Scheduler\Attributes\**" />
+    <EmbeddedResource Remove="Scheduler\Attributes\**" />
+    <None Remove="Scheduler\Attributes\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DnsClient" Version="1.8.0" />
+    <PackageReference Include="LinqKit" Version="1.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.7" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Liquid.Runtime\Liquid.Runtime.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Localization.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Localization.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Localization.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localization.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Localization.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microservice</name>
+    </assembly>
+    <members>
+        <member name="T:Microservice.Controllers.NotificationsController">
+            <summary>
+            API with its endpoints and exchangeable datatypes
+            </summary>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.MigrateAsync">
+            <summary>
+            MigrateAsync
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.ReprocessAddressesBouncesAsync(System.DateTime,System.DateTime)">
+            <summary>
+            Reprocesses emails bounces
+            </summary>
+            <param name="from">The start date and time to reprocess from</param>
+            <param name="to">The end date and time to reprocess to</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.GetAllByUser(System.String)">
+            <summary>
+            Gets all notifications of a given user
+            </summary>
+            <param name="userId">The id of the user</param>
+            <returns>List of notifications</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.GetAllMine">
+            <summary>
+            Gets all notifications of the current user
+            </summary>
+            <returns>List of notifications</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.GetMineByIdAsync(System.String)">
+            <summary>
+            Gets a given notification of the current user
+            </summary>
+            <param name="id">Id of the notification</param>
+            <returns>The user notification</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.MarkAllMineAsViewedAsync">
+            <summary>
+            Marks as viewed all notifications of the current user
+            </summary>
+            <returns>List of marked notifications</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.MarkMineAsViewedByIdAsync(System.String)">
+            <summary>
+            Marks as viewed a given notification of the current user
+            </summary>
+            <param name="id">Id of the notification</param>
+            <returns>The marked notification</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.ClearAllMineViewedAsync">
+            <summary>
+            Clears all viewed all notifications of the current user
+            </summary>
+            <returns>List of cleared notifications</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.WebPushSubscribeAsync(Microservice.ViewModels.WebPushEndpointVM)">
+            <summary>
+            Registers a webpush notification subscription endpoint for the current user
+            </summary>
+            <param name="subscriptionEndpoint">The webpush notification endpoint subscription data to register</param>
+            <returns>The subscription registered</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.WebPushUnsubscribeAsync(System.String)">
+            <summary>
+            Unregisters a webpush notification subscription endpoint for the current user
+            </summary>
+            <param name="deviceId">Id of the device registered for webpush notification</param>
+            <returns>The subscription unregistered</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.GetUserOfNotificationAsync(System.String)">
+            <summary>
+            Gets basic user info of the notification
+            </summary>
+            <param name="id">Id of the notification</param>
+            <returns>User basic info</returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.GetStatusTypes">
+            <summary>
+            Gets notification types
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.TestWebPushSendAsync(Liquid.Platform.NotificationVM)">
+            <summary>
+            Test method to send webpushs
+            </summary>
+            <param name="notifVM">Notification content</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.TestEmailSendAsync(Liquid.Platform.EmailMSG)">
+            <summary>
+            Test method to send emails
+            </summary>
+            <param name="emailMessage">Email content</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.TestGetEmailAddressesBouncesAsync(System.DateTime,System.DateTime)">
+            <summary>
+            Test method to get emails bounces
+            </summary>
+            <param name="from">The start date and time to filter from</param>
+            <param name="to">The end date and time to filter to</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microservice.Controllers.NotificationsController.TestSendNotificationAsync(Liquid.Platform.NotificationVM)">
+            <summary>
+            Test method to send emails
+            </summary>
+            <param name="notifVM">Notification content</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microservice.Models.WebPushEndpoint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microservice.Models.WebPushEndpoint.DeviceId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microservice.Models.WebPushEndpoint.PushEndpoint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microservice.Models.WebPushEndpoint.PushP256DH">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microservice.Models.WebPushEndpoint.PushAuth">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microservice.Models.WebPushEndpoint.ValidateModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microservice.Services.EmailService.FindUrlRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>(?:https?:\\/\\/)((([A-Za-z]{3,9}:(?:\\/\\/)?|localhost:)(?:[-;:&amp;=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+|(?:|[-;:&amp;=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&amp;;%@.\\w_]*)#?(?:[\\w]*))?)</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match the string "http".<br/>
+            ○ Match 's' atomically, optionally.<br/>
+            ○ Match the string "://".<br/>
+            ○ 1st capture group.<br/>
+                ○ 2nd capture group.<br/>
+                    ○ Match with 2 alternative expressions.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ 3rd capture group.<br/>
+                                ○ Match with 2 alternative expressions.<br/>
+                                    ○ Match a sequence of expressions.<br/>
+                                        ○ Match a character in the set [A-Za-z] atomically at least 3 and at most 9 times.<br/>
+                                        ○ Match ':'.<br/>
+                                        ○ Optional (greedy).<br/>
+                                            ○ Match the string "//".<br/>
+                                    ○ Match the string "localhost:".<br/>
+                            ○ Optional (greedy).<br/>
+                                ○ Match a character in the set [$&amp;+--:;=\w] atomically at least once.<br/>
+                                ○ Match '@'.<br/>
+                            ○ Match a character in the set [-.0-9A-Za-z] greedily at least once.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match with 2 alternative expressions.<br/>
+                                ○ Match an empty string.<br/>
+                                ○ Match a sequence of expressions.<br/>
+                                    ○ Match a character in the set [$&amp;+--:;=\w] atomically at least once.<br/>
+                                    ○ Match '@'.<br/>
+                            ○ Match a character in the set [-.0-9A-Za-z] greedily at least once.<br/>
+                ○ Optional (greedy).<br/>
+                    ○ 4th capture group.<br/>
+                        ○ Optional (greedy).<br/>
+                            ○ Match '/'.<br/>
+                            ○ Match a character in the set [%+--/_~\w] greedily any number of times.<br/>
+                        ○ Match '?' greedily, optionally.<br/>
+                        ○ Match a character in the set [%&amp;+-.;=@_\w] greedily any number of times.<br/>
+                        ○ Match '#' greedily, optionally.<br/>
+                        ○ Match a word character atomically any number of times.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Microservice.Services.ConfigService">
+            <summary>
+            Manages the notification configuration for each user
+            </summary>
+        </member>
+        <member name="T:Microservice.Services.NotificationService">
+            <summary>
+            Sends contextual notifications thought user´s available channels
+            </summary>
+        </member>
+        <member name="T:Microservice.ViewModels.BasicUserInfoVM">
+            <summary>
+            A user's configuration profile with its exposable attributes
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.BasicUserInfoVM.Id">
+            <summary>
+            User's id
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.BasicUserInfoVM.Name">
+            <summary>
+            User´s name 
+            </summary>
+        </member>
+        <member name="M:Microservice.ViewModels.BasicUserInfoVM.ValidateModel">
+            <summary>
+            Language selected by the user
+            </summary>
+        </member>
+        <member name="T:Microservice.ViewModels.ConfigVM">
+            <summary>
+            A user's configuration profile with its exposable attributes
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.Id">
+            <summary>
+            User's id
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.Name">
+            <summary>
+            User´s name 
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.Language">
+            <summary>
+            Language selected by the user
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.TimeZone">
+            <summary>
+            Timezone selected by the user
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.Email">
+            <summary>
+            The user's email
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.EmailIsValid">
+            <summary>
+            Indicates whether the email has been validated
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.Phone">
+            <summary>
+            The user's phone
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.ConfigVM.PhoneIsValid">
+            <summary>
+            Indicates whether the phone has been validated
+            </summary>
+        </member>
+        <member name="T:Microservice.ViewModels.HistoryVM">
+            <summary>
+            A notification history
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.HistoryVM.Id">
+            <summary>
+            Notification's id
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.HistoryVM.ShortMessage">
+            <summary>
+            Short message to be promptly shown to user
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.HistoryVM.LongMessage">
+            <summary>
+            Long message to be shown to user as further detail
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.HistoryVM.SentAt">
+            <summary>
+            DataTime at which the notification was sent
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.HistoryVM.ViewedAt">
+            <summary>
+            DataTime at which the notification was viewed by the user
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.HistoryVM.EmailSent">
+            <summary>
+            Indication whether an reinforment by email was sent
+            </summary>
+        </member>
+        <member name="T:Microservice.ViewModels.WebPushEndpointVM">
+            <summary>
+            A user's profile with its editable attributes
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.WebPushEndpointVM.DeviceId">
+            <summary>
+            The id of the device
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.WebPushEndpointVM.PushEndpoint">
+            <summary>
+            The web endpoint for doing a push
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.WebPushEndpointVM.PushP256DH">
+            <summary>
+            The P256DH key
+            </summary>
+        </member>
+        <member name="P:Microservice.ViewModels.WebPushEndpointVM.PushAuth">
+            <summary>
+            The WebPush authorization token
+            </summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.FindUrlRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the FindUrlRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.FindUrlRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FindUrlRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.FindUrlRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FindUrlRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.FindUrlRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FindUrlRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FindUrlRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FindUrlRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.IsWordChar(System.Char)">
+            <summary>Determines whether the character is part of the [\w] set.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPop(System.Int32[],System.Int32@,System.Int32@,System.Int32@)">
+            <summary>Pops 2 values from the backtracking stack.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPush(System.Int32[]@,System.Int32@,System.Int32)">
+            <summary>Pushes 1 value onto the backtracking stack.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPush(System.Int32[]@,System.Int32@,System.Int32,System.Int32)">
+            <summary>Pushes 2 values onto the backtracking stack.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPush(System.Int32[]@,System.Int32@,System.Int32,System.Int32,System.Int32)">
+            <summary>Pushes 3 values onto the backtracking stack.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_ascii_60FF03FEFFFF07FEFFFF07">
+            <summary>Supports searching for characters in or not in "-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".</summary>
+        </member>
+    </members>
+</doc>
