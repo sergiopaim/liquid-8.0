@@ -1,4 +1,4 @@
-# Liquid-v6.0
+# Liquid-v8.0
 Liquid Application Framework - v8.0
 
 # Develop and Run Liquid Modern Applications
