@@ -28,8 +28,8 @@ To use Liquid, you create a new base .NET Web API Application and install the fo
 
 And then choose what implementation cartridge you need to run your environment:
 
-- If you'll deploy your application to Azure, install `LiquidApplication.OnAzure`
-- If you'll deploy your application to Google, install `LiquidApplication.OnGoogle`
+- If you'll run your application with PaaS services from Azure, install `LiquidApplication.OnAzure`
+- If you'll deploy your application PaaS services from GCP, install `LiquidApplication.OnGoogle`
 
 # Contribute
 Some of the best ways to contribute are to try things out, file issues, and make pull-requests.
