@@ -9,7 +9,7 @@ When writing Liquid applications, you stop worrying about the technology and foc
 # Evolution of [Liquid v6.0](https://github.com/sergiopaim/liquid-6.0)
 This version is an evolution of [Liquid v6.0](https://github.com/sergiopaim/liquid-6.0).
 
-This upgrade, which jumps directly to version v8.0, upgrades from .NET Core v6.0 to .NET v8.0.
+This version, which jumps directly to version v8.0, upgrades from .NET Core v6.0 to .NET v8.0.
 
 Finally it brings:
 - Valuable improvements and additions related to the adherence to advanced DDD concepts (such as policy specifications and rich domain classes)
